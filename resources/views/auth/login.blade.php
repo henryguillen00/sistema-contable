@@ -40,6 +40,18 @@
                         </div>
 
                         <div class="form-group row">
+                        <div class="col-md-6 offset-md-4">
+                        {!! NoCaptcha::renderJs('es', false, 'onloadCallback') !!}
+                        {!! NoCaptcha::display() !!}
+                        @if ($errors->has('g-recaptcha-response'))
+                            <span class="help-block" >
+                                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                            </span>
+                        @endif  
+                        </div>
+                        </div>
+
+                        <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -71,3 +83,9 @@
     </div>
 </div>
 @endsection
+<script>
+    var onloadCallback = function() {
+    alert("grecaptcha is ready!");
+  };
+
+</script>

@@ -137,8 +137,9 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'g-recaptcha-response' => [
+            'required' => 'Por favor verifica que no eres un robot.',
+            'captcha' => 'Captcha error! try again later or contact site admin.',
         ],
     ],
 
