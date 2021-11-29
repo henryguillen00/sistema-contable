@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\CreditoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +20,17 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+
+
+
 Route::resource('producto',ProductoController::class)->middleware('auth');
+Route::resource('proveedor',ProveedorController::class);
+Route::resource('credito',CreditoController::class);
 
 Auth::routes(['reset'=>false]);
 
-Route::get('/home', [ProductoController::class, 'index'])->name('home');
+
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [ProductoController::class, 'index'])->name('home');
